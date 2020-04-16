@@ -1,0 +1,6 @@
+@media screen and (max-width : 767px) {
+    .add-button__image {
+        width: 16px;
+        height: 16px;              
+    }
+}
