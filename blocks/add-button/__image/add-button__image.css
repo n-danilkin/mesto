@@ -1,6 +1,11 @@
+.add-button:hover .add-button__image path {
+    fill: rgba(255, 255, 255, 0.6);
+}
+
 @media screen and (max-width : 767px) {
     .add-button__image {
         width: 16px;
-        height: 16px;              
+        height: 16px;
     }
 }
+

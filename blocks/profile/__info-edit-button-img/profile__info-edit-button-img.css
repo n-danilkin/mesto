@@ -1,3 +1,7 @@
+.profile__info-edit-button:hover .profile__info-edit-button-img path {
+    fill: rgba(255, 255, 255, 0.6);
+}
+
 @media screen and (max-width : 767px) {
     .profile__info-edit-button-img {
         width: 7px;

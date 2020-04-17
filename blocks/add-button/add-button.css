@@ -10,6 +10,12 @@
     padding: 0;
 }
 
+.add-button:hover {
+    border-color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+}
+
+
 @media screen and (max-width : 767px) {
     .add-button {
         width: 100%;  
