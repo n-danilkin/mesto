@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>mesto</title>
     <link rel="stylesheet" href="./styles/index.css">
 </head>
 
@@ -12,10 +12,20 @@
     <div class="page">
         <div class="popup">
             <div class="popup__content">
+                <button class="popup__close-button">
+                    <svg class="popup__close-button-image" viewBox="0 0 34 34" width="33" height="33"
+                        viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M32.7661 29.5683L19.9759 16.778L32.7661 3.98779L29.5686 0.790236L16.7783 13.5805L3.98808 0.790236L0.790527 3.98779L13.5808 16.778L0.790527 29.5683L3.98808 32.7658L16.7783 19.9756L29.5686 32.7658L32.7661 29.5683Z"
+                            fill="white" />
+                    </svg>
+                </button>
                 <h2 class="popup__title">Редактировать профиль</h2>
-                <input class="popup__input-name">
-                <input class="popup__input-description">
-                <button class="popup__save-button">Сохранить</button>
+                <form class="popup__form-edit">
+                    <input class="popup__input-name" type="text">
+                    <input class="popup__input-description" type="text">
+                    <button class="popup__save-button" type="submit">Сохранить</button>
+                </form>
             </div>
         </div>
         <header class="header">
@@ -30,11 +40,23 @@
                             <p class="profile__info-name">Жак-Ив Кусто</p>
                             <p class="profile__info-description">Исследователь океана</p>
                         </div>
-                        <button class="profile__info-edit-button"><img class="profile__info-edit-button-img"
-                                src="./images/edit-button.svg"></button>
+                        <button class="profile__info-edit-button">
+                            <svg class="profile__info-edit-button-img" width="10" height="10" viewBox="0 0 10 10" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M10 1.32827L2.60377 8.7666L1.28302 7.41936L8.66038 0L10 1.32827ZM0 10L1.96226 9.41177L0.584906 8.08349L0 10Z"
+                                    fill="white" />
+                            </svg>
+                        </button>
                     </div>
                 </div>
-                <button class="add-button"><img class="add-button__image" src="./images/Vector.svg"></button>
+                <button class="add-button">
+                    <svg class="add-button__image" width="22" height="22" viewBox="0 0 22 22" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M22 9.77778H12.2222V0H9.77778V9.77778H0V12.2222H9.77778V22H12.2222V12.2222H22V9.77778Z"
+                            fill="white" />
+                    </svg>
+                </button>
             </section>
 
             <section class="elements">
@@ -76,7 +98,7 @@
                 <div class="element">
                     <img class="element__image" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="">
                     <div class="element__container">
-                        <p class="element__description">Карачаево-Ч...</p>
+                        <p class="element__description">Карачаевск</p>
                         <button class="element__like-button"><img src="./images/heart.svg"></button>
                     </div>
                 </div>
@@ -86,6 +108,7 @@
             <p class="footer__copyright">&#169; 2020 Mesto Russia</p>
         </footer>
     </div>
+    <script src="./script/script.js"></script>
 </body>
 
 </html>

@@ -3,6 +3,9 @@
 @import url('./__input-name/popup__input-name.css');
 @import url('./__save-button/popup__save-button.css');
 @import url('./__title/popup__title.css');
+@import url('./__close-button/popup__close-button.css');
+@import url('./__form-edit/popup__form-edit.css');
+@import url('./__close-button-image/popup__close-button-image.css');
 
 .popup {
     width: 100%;
@@ -11,4 +14,5 @@
     overflow: hidden;
     position: fixed;
     top: 0px;
+    display: none;
 }
