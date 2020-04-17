@@ -9,9 +9,10 @@ let profileName = document.querySelector('.profile__info-name');
 let profileDescription = document.querySelector('.profile__info-description');
 
 function inputProfileFiller () {    
-    inputProfileName.value = profileName.innerHTML;
-    inputProfileDescriprion.value = profileDescription.innerHTML;
+  inputProfileName.value = profileName.innerHTML;
+  inputProfileDescriprion.value = profileDescription.innerHTML;
 }
+
 function saveProfile () {
   profileName.innerHTML = inputProfileName.value;
   profileDescription.innerHTML = inputProfileDescriprion.value;
