@@ -11,24 +11,25 @@
     .elements {
         width: calc(100% - 2 * 100px);
     }
-    
+
 }
 
 @media screen and (max-width : 1279px) {
     .elements {
         width: calc(100% - 2 * 50px);
-    }    
+    }
 }
 
 @media screen and (max-width : 767px) {
     .elements {
         width: calc(100% - 2 * 19px);
-    }    
+    }
 }
+
 @media screen and (max-width : 620px) {
     .elements {
         flex-direction: column;
         align-items: center;
-    } 
-    
+    }
+
 }

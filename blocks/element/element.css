@@ -7,7 +7,10 @@
     border-radius: 10px;
     margin-top: 20px;
     margin-right: 18px;
+    display: flex;
+    flex-direction: column;
 }
+
 .element:nth-child(3n) {
     margin-right: 0;
 }
@@ -16,10 +19,12 @@
 @media screen and (max-width : 981px) {
     .element:nth-child(2n) {
         margin-right: 0;
-    } 
+    }
+
     .element:nth-child(3n) {
         margin-right: 18px;
-    }  
+    }
+
     .element:last-child {
         margin-right: 0;
     }
@@ -28,13 +33,16 @@
 @media screen and (max-width : 620px) {
     .element:nth-child(2n) {
         margin-right: 0;
-    } 
+    }
+
     .element:nth-child(3n) {
         margin-right: 0px;
-    }  
+    }
+
     .element {
         margin-right: 0;
     }
+
     .element:first-child {
         margin-top: 0;
     }
