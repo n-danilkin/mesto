@@ -6,9 +6,9 @@
 
 
 @media screen and (max-width : 767px) {
-    .profile__container {       
+    .profile__container {
         flex-direction: column;
         align-items: center;
         margin-top: 0;
     }
-}    
+}
