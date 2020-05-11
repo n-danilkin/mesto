@@ -2,48 +2,11 @@
 @import url('./__description/element__description.css');
 @import url('./__image/element__image.css');
 @import url('./__like-button/element__like-button.css');
-
+@import url('./__like-button/_active/element__like-button_active.css');
+@import url('./__delete-button/element__delete-button.css');
 .element {
-    border-radius: 10px;
-    margin-top: 20px;
-    margin-right: 18px;
+    border-radius: 10px;        
     display: flex;
     flex-direction: column;
-}
-
-.element:nth-child(3n) {
-    margin-right: 0;
-}
-
-
-@media screen and (max-width : 981px) {
-    .element:nth-child(2n) {
-        margin-right: 0;
-    }
-
-    .element:nth-child(3n) {
-        margin-right: 18px;
-    }
-
-    .element:last-child {
-        margin-right: 0;
-    }
-}
-
-@media screen and (max-width : 620px) {
-    .element:nth-child(2n) {
-        margin-right: 0;
-    }
-
-    .element:nth-child(3n) {
-        margin-right: 0px;
-    }
-
-    .element {
-        margin-right: 0;
-    }
-
-    .element:first-child {
-        margin-top: 0;
-    }
+    position: relative;
 }
