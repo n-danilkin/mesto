@@ -1,4 +1,4 @@
-.popup__save-button {
+.button {
     color: #ffffff;
     background-color: black;
     border: 0;
@@ -7,9 +7,11 @@
     font-size: 18px;
     line-height: 22px;
     text-align: center;
+    width: 100%;
+    border-radius: 2px;
 }
 
-.popup__save-button:hover {
+.button:hover {
     background: rgba(0, 0, 0, 0.8);
     cursor: pointer;
 }

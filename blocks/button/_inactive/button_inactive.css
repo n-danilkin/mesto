@@ -1,0 +1,10 @@
+.button_inactive {
+    color: #C4C4C4;
+    background: #FFFFFF;
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid #C4C4C4;
+}

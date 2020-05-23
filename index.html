@@ -70,15 +70,23 @@
                     </svg>
                 </button>
                 <h2 class="popup__title"></h2>
-                <form class="popup__form-edit">
-                    <input class="popup__input-name" type="text">
-                    <input class="popup__input-description" type="text">
-                    <button class="popup__save-button" type="submit"></button>
+                <form class="popup-form" novalidate>
+                    <fieldset class="popup-form__set">
+                        <label class="popup-form__field">
+                            <input class="popup-form__input" id="first-field-input">
+                            <span class='popup-form__input-error' id='first-field-input-error'></span>
+                        </label>
+                        <label class="popup-form__field">
+                            <input class="popup-form__input" id="second-field-input">
+                            <span class='popup-form__input-error' id='second-field-input-error'></span>
+                        </label>
+                        <button class="popup-form__submit button" type="submit"></button>
+                    </fieldset>
                 </form>
             </div>
         </div>
     </template>
-      
+    <script src="./script/validate.js"></script>
     <script src="./script/script.js"></script>
 </body>
 

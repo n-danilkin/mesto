@@ -61,7 +61,7 @@ function createPlace({ title, image }) {
     `;
 
     popup.querySelector('.popup__title').remove();
-    popup.querySelector('.popup__form-edit').remove();
+    popup.querySelector('.popup-form').remove();
 
     const placeImage = document.createElement('img');
     const caption = document.createElement('p');
@@ -75,13 +75,11 @@ function createPlace({ title, image }) {
     placeImage.src = image;
 
     addCloseButtonListeners(popup);
-
+    addOverlayListeners(popup);
+    addEscListeners(popup);
     page.append(popup);
-
-    popupContent.append(placeImage, caption)
-
+    popupContent.append(placeImage, caption);
     animationOpenPopup(popup);
-
   });
 
   return element
@@ -118,8 +116,20 @@ function addCloseButtonListeners(popup) {
     animatedPopupClosing(popup);
   });
 }
-
-
+function addOverlayListeners(popup) {
+  popup.addEventListener('mousedown', function (evt) {
+    if (evt.target.classList.contains('popup')) {
+      animatedPopupClosing(popup);
+    }
+  });
+}
+function addEscListeners(popup) {
+  document.addEventListener('keydown', function (evt) {
+    if (evt.key === 'Escape') {
+      animatedPopupClosing(popup);
+    }
+  });
+}
 
 function getPageProfileInfo() {
   const profileName = document.querySelector('.profile__info-name');
@@ -140,8 +150,8 @@ function fillPageProfileInfo(profileInfo) {
 }
 
 function fillPopupProfileInfo(popup, profileInfo) {
-  const profileName = popup.querySelector('.popup__input-name');
-  const profileDescription = popup.querySelector('.popup__input-description');
+  const profileName = popup.querySelector('#first-field-input');
+  const profileDescription = popup.querySelector('#second-field-input');
 
   profileName.value = profileInfo.name;
   profileDescription.value = profileInfo.description;
@@ -164,8 +174,8 @@ function animatedPopupClosing(popup) {
 }
 
 function savePlaceInformation(popup) {
-  const inputPlaceName = popup.querySelector('.popup__input-name');
-  const inputImageLink = popup.querySelector('.popup__input-description');
+  const inputPlaceName = popup.querySelector('#first-field-input');
+  const inputImageLink = popup.querySelector('#second-field-input');
   const place = createPlace({
     title: inputPlaceName.value,
     image: inputImageLink.value,
@@ -175,8 +185,8 @@ function savePlaceInformation(popup) {
 }
 
 function saveProfileInformation(popup) {
-  const inputProfileName = popup.querySelector('.popup__input-name');
-  const inputProfileDescriprion = popup.querySelector('.popup__input-description');
+  const inputProfileName = popup.querySelector('#first-field-input');
+  const inputProfileDescriprion = popup.querySelector('#second-field-input');
   fillPageProfileInfo({
     name: inputProfileName.value,
     description: inputProfileDescriprion.value,
@@ -187,20 +197,39 @@ function saveProfileInformation(popup) {
 function profilePopupFiller(popup) {
   const profileInfo = getPageProfileInfo();
   fillPopupProfileInfo(popup, profileInfo);
+
+  const profileName = popup.querySelector('#first-field-input');
+  const profileDescription = popup.querySelector('#second-field-input');
+  profileName.required = true;
+  profileName.minLength = '2';
+  profileName.maxLength = '40';
+  profileName.type = 'text';
+  profileName.pattern = '[a-zA-ZА-ЯЁа-яё\s\-]+[^\s\-]+';
+  profileDescription.required = true;
+  profileDescription.minLength = '2';
+  profileDescription.maxLength = '200';
+
   popup.querySelector('.popup__title').textContent = 'Редактировать профиль';
-  popup.querySelector('.popup__save-button').textContent = 'Сохранить';
+  popup.querySelector('.popup-form__submit').textContent = 'Сохранить';
 }
 
 
 function placePopupFiller(popup) {
-  popup.querySelector('.popup__input-name').placeholder = 'Название';
-  popup.querySelector('.popup__input-description').placeholder = 'Ссылка на картинку';
+  const placeName = popup.querySelector('#first-field-input');
+  const placeUrl = popup.querySelector('#second-field-input');
+  placeName.required = true;
+  placeUrl.required = true;
+  placeName.minLength = '1';
+  placeName.maxLength = '30';
+  placeUrl.type = 'url';
+  popup.querySelector('#first-field-input').placeholder = 'Название';
+  popup.querySelector('#second-field-input').placeholder = 'Ссылка на картинку';
   popup.querySelector('.popup__title').textContent = 'Новое место';
-  popup.querySelector('.popup__save-button').textContent = 'Создать';
+  popup.querySelector('.popup-form__submit').textContent = 'Создать';
 }
 
 function addSubmitListenters(popup, func) {
-  popup.querySelector('.popup__form-edit').addEventListener('submit', function (e) {
+  popup.querySelector('.popup-form').addEventListener('submit', function (e) {
     e.preventDefault();
     func(popup);
   });
@@ -213,9 +242,20 @@ function addPopupOpenButtonOnclickListeners(button, filler, saveEvent) {
     }
     const popup = createPopup();
     filler(popup);
-    addSubmitListenters(popup, saveEvent);
     addCloseButtonListeners(popup);
+    addSubmitListenters(popup, saveEvent);
+    addEscListeners(popup);
     page.append(popup);
+    addOverlayListeners(popup);
+    enableValidation({
+      formSelector: '.popup-form',
+      fieldsetSelector: '.popup-form__set',
+      inputSelector: '.popup-form__input',
+      submitButtonSelector: '.popup-form__submit',
+      inactiveButtonClass: 'button_inactive',
+      inputErrorClass: 'popup-form__input_error',
+      errorClass: 'popup-form__input-error_active'
+    });
     animationOpenPopup(popup);
   });
 
