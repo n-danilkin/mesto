@@ -1,5 +1,6 @@
 const profilePopupOpenButton = document.querySelector('.profile__info-edit-button');
 const placePopupOpenButton = document.querySelector('.add-button');
+const popupTemplate = document.querySelector('#popup-template').content;
 const page = document.querySelector('.page');
 
 const initialCards = [
@@ -101,9 +102,7 @@ initialCards.forEach(function (arrayElement) {
 });
 
 function createPopup() {
-  const popupTemplate = document.querySelector('#popup-template').content;
   const popup = popupTemplate.cloneNode(true);
-
   return popup.firstElementChild
 }
 
@@ -123,12 +122,16 @@ function addOverlayListeners(popup) {
     }
   });
 }
+
 function addEscListeners(popup) {
-  document.addEventListener('keydown', function (evt) {
+  document.addEventListener('keydown', escapeKeydownEvent);
+
+  function escapeKeydownEvent(evt) {
     if (evt.key === 'Escape') {
       animatedPopupClosing(popup);
+      document.removeEventListener('keydown', escapeKeydownEvent);
     }
-  });
+  }
 }
 
 function getPageProfileInfo() {
