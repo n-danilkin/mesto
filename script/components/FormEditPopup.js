@@ -55,10 +55,10 @@ export default class FormEditPopup extends FormPopup {
   }
   open() {
     super.open();
-    const formSelector = document.querySelector('.popup-form');
-    this._profilePopupFiller(this._container);
-    const validateForm = new FormValidator(initialForms, formSelector);
-    validateForm.enableValidation();
+    const formSelector = document.querySelectorAll('.popup-form');  
+    this._profilePopupFiller(this._container);  
     super._addSubmitListenters(this._container, () => { this._saveProfileInformation(this._container) });
+    const validateForm = new FormValidator(initialForms, formSelector);
+    validateForm.enableValidation(); 
   }
 }

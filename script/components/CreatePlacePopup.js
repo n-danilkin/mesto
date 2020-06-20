@@ -34,6 +34,5 @@ export default class CreatePlacePopup extends FormPopup {
     super._addSubmitListenters(this._container, () => { this._savePlaceInformation(this._container) });
     const validateForm = new FormValidator(initialForms, formSelector);
     validateForm.enableValidation();
-
   }
 }

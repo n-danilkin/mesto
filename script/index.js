@@ -1,14 +1,10 @@
-import Card from '../components/Card.js';
-import FormEditPopup from '../components/FormEditPopup.js';
-import CreatePlacePopup from '../components/CreatePlacePopup.js';
-import { initialCards } from '../utils/constants.js';
+import Card from './components/Card.js';
+import FormEditPopup from './components/FormEditPopup.js';
+import CreatePlacePopup from './components/CreatePlacePopup.js';
+import { initialCards } from './utils/constants.js';
 
 const profilePopupOpenButton = document.querySelector('.profile__info-edit-button');
 const placePopupOpenButton = document.querySelector('.add-button');
-const popupTemplate = document.querySelector('#popup-template').content;
-
-
-
 
 initialCards.forEach(function (item) {
   const card = new Card(item, '#element-template');
@@ -29,8 +25,3 @@ function addPopupOpenButtonOnclickListeners(button, popupType) {
 addPopupOpenButtonOnclickListeners(profilePopupOpenButton, FormEditPopup);
 
 addPopupOpenButtonOnclickListeners(placePopupOpenButton, CreatePlacePopup);
-
-
-
-
-
