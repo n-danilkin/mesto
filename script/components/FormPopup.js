@@ -18,16 +18,15 @@ export default class FormPopup {
             }
         });
     }
-    _addEscListeners(popup) {
-        document.addEventListener('keydown', escapeKeydownEvent);
-
-        function escapeKeydownEvent(evt) {
-            if (evt.key === 'Escape') {
-                animatedPopupClosing(popup);
+    _addEscListeners() { 
+        const escapeKeydownEvent = (evt) => {
+            if (evt.key === 'Escape') {                
+                this.close();
                 document.removeEventListener('keydown', escapeKeydownEvent);
             }
         }
-    }
+        document.addEventListener('keydown', escapeKeydownEvent);
+    }    
     _addSubmitListenters(popup, func) {
         popup.querySelector('.popup-form').addEventListener('submit', (e) => {
             e.preventDefault();
@@ -52,7 +51,7 @@ export default class FormPopup {
         const popupTemplate = document.querySelector('#popup-template').content;
         this._container = this._createPopup(popupTemplate);
         this._addCloseButtonListeners(this._container);
-        this._addEscListeners(this._container);
+        this._addEscListeners();
         document.querySelector('.page').append(this._container);
         this._addOverlayListeners(this._container);
         this._animationOpenPopup(this._container);
