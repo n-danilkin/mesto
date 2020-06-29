@@ -30,8 +30,7 @@ export const fillPopupPlace = (popup) => {
     profileDescription.maxLength = '200';
     popup.querySelector('.popup__title').textContent = 'Редактировать профиль';
     popup.querySelector('.popup-form__submit').textContent = 'Сохранить';
-    const profileValues = userInfo.getUserInfo();
-    console.log(userInfo)
+    const profileValues = userInfo.getUserInfo();    
     profileName.value = profileValues.name;
     profileDescription.value = profileValues.description;
   }

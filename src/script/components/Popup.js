@@ -44,8 +44,7 @@ export default class Popup {
             this._closePopup(this._container);
         });
     }
-    open() {
-        console.log(this._popupSelector)
+    open() {        
         this._container = this._createPopup(this._popupSelector);
         this.setEventListeners(this._container);
         this._addEscListeners();

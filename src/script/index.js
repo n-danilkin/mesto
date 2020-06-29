@@ -71,8 +71,7 @@ placePopupOpenButton.addEventListener('click', function () {
   }
   const popup = new PopupWithForm({
     popupSelector: popupSelector,
-    handleFormSubmit: (item) => {
-      console.log(1)
+    handleFormSubmit: (item) => {      
       const card = new Card({
         data: item,
         cardSelector: '#element-template',
