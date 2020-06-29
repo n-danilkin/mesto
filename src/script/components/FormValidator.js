@@ -11,7 +11,7 @@ export default class FormValidator {
   }
 
 
-  _setEventListeners = (fieldSet) => {
+  _setEventListeners(fieldSet) {
     const inputList = Array.from(fieldSet.querySelectorAll(this._inputSelector));
     const buttonElement = fieldSet.querySelector(this._submitButtonSelector);
 
@@ -25,7 +25,7 @@ export default class FormValidator {
     });
   };
 
-  _checkInputValidity = (fieldSet, inputElement) => {
+  _checkInputValidity(fieldSet, inputElement) {
     if (!inputElement.validity.valid) {
       this._showInputError(fieldSet, inputElement, inputElement.validationMessage);
     } else {
@@ -33,7 +33,7 @@ export default class FormValidator {
     }
   };
 
-  _toggleButtonState = (inputList, buttonElement) => {
+  _toggleButtonState(inputList, buttonElement) {
 
     if (this._hasInvalidInput(inputList)) {
       buttonElement.setAttribute('disabled', true);
@@ -44,13 +44,13 @@ export default class FormValidator {
     }
   };
 
-  _showInputError = (fieldSet, inputElement, errorMessage) => {
+  _showInputError(fieldSet, inputElement, errorMessage) {
     const errorElement = fieldSet.querySelector(`#${inputElement.id}-error`);
     inputElement.classList.add(this._inputErrorClass);
     errorElement.textContent = errorMessage;
     errorElement.classList.add(this._errorClass);
   };
-  _hideInputError = (fieldSet, inputElement) => {
+  _hideInputError(fieldSet, inputElement) {
     const errorElement = fieldSet.querySelector(`#${inputElement.id}-error`);
     inputElement.classList.remove(this._inputErrorClass);
     errorElement.classList.remove(this._errorClass);

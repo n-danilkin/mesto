@@ -27,7 +27,9 @@
   - HTML5
   - CSS3
   - JavaScript
-
+  
+Сборка:
+  - WebPack
 
 Методологии:
   - БЭМ

@@ -3,6 +3,7 @@ import PopupWithForm from './components/PopupWithForm.js';
 import PopupWithImage from './components/PopupWithImage.js';
 import FormValidator from './components/FormValidator.js';
 import Section from './components/Section.js';
+import '../styles/index.css';
 import {
   popupSelector,
   initialCards,
