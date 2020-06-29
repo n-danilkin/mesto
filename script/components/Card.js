@@ -1,9 +1,10 @@
-import ImagePopup from "./ImagePopup.js";
+import PopupWithImage from "./PopupWithImage.js";
 export default class Card {
-    constructor(data, cardSelector) {
+    constructor({ data, cardSelector, handleCardClick }) {
         this._cardSelector = cardSelector;
         this._name = data.name;
         this._link = data.link;
+        this._handleCardClick = handleCardClick;
     }
     _getTemplate() {
         const placeElement = document
@@ -12,16 +13,13 @@ export default class Card {
             .cloneNode(true);
         return placeElement;
     }
-    _appendPlaceToDom(place) {
-        const elements = document.querySelector('.elements');
-        elements.append(place);
-    }
     generateCard() {
         this._element = this._getTemplate();
         this._setEventListeners();
         this._element.querySelector('.element__description').textContent = this._name;
         this._element.querySelector('.element__image').src = this._link;
-        this._appendPlaceToDom(this._element);
+        return this._element
+
     }
     _setEventListeners() {
         this._element.querySelector('.element__like-button').addEventListener('click', function (evt) {
@@ -34,9 +32,10 @@ export default class Card {
             eventTarget.parentElement.remove();
         });
         this._element.querySelector('.element__image').addEventListener('click', () => {
-            const img = new ImagePopup;
-            img.open(this._link, this._name)
+            this._handleCardClick({
+                link: this._link,
+                name: this._name
+            })
         });
-
     }
 }

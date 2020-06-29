@@ -1,12 +1,15 @@
-export default class FormPopup {
+export default class Popup {
+    constructor(popupSelector) {
+        this._popupSelector = popupSelector;
+    }
     _createPopup(popupTemplate) {
-        const popup = popupTemplate.cloneNode(true);
+        const popup = popupTemplate.content.cloneNode(true);
         return popup.firstElementChild
     }
     _closePopup(popup) {
         popup.remove();
     }
-    _addCloseButtonListeners(popup) {
+    setEventListeners(popup) {
         popup.querySelector('.popup__close-button').addEventListener('click', () => {
             this.close();
         });
@@ -18,20 +21,14 @@ export default class FormPopup {
             }
         });
     }
-    _addEscListeners() { 
+    _addEscListeners() {
         const escapeKeydownEvent = (evt) => {
-            if (evt.key === 'Escape') {                
+            if (evt.key === 'Escape') {
                 this.close();
                 document.removeEventListener('keydown', escapeKeydownEvent);
             }
         }
         document.addEventListener('keydown', escapeKeydownEvent);
-    }    
-    _addSubmitListenters(popup, func) {
-        popup.querySelector('.popup-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            func(popup);
-        });
     }
     _animationOpenPopup(popup) {
         popup.offsetHeight;
@@ -48,9 +45,9 @@ export default class FormPopup {
         });
     }
     open() {
-        const popupTemplate = document.querySelector('#popup-template').content;
-        this._container = this._createPopup(popupTemplate);
-        this._addCloseButtonListeners(this._container);
+        console.log(this._popupSelector)
+        this._container = this._createPopup(this._popupSelector);
+        this.setEventListeners(this._container);
         this._addEscListeners();
         document.querySelector('.page').append(this._container);
         this._addOverlayListeners(this._container);

@@ -1,3 +1,4 @@
+
 export const initialCards = [
   {
     name: 'Архыз',
@@ -25,6 +26,10 @@ export const initialCards = [
   }
 ];
 
+export const popupSelector = document.querySelector('#popup-template');
+
+export const elements = '.elements';
+
 export const initialForms = {
   fieldsetSelector: '.popup-form__set',
   inputSelector: '.popup-form__input',
@@ -34,3 +39,9 @@ export const initialForms = {
   errorClass: 'popup-form__input-error_active'
 }
 
+
+
+export const profileInfo = {
+  profileName: '.profile__info-name',
+  profileDescription: '.profile__info-description'
+}
