@@ -25,8 +25,9 @@ export const initialCards = [
   }
 ];
 
-export const popupSelector = document.querySelector('#popup-template');
-
+export const popupEditFormSelector = document.querySelector('#popup-editprofile-template');
+export const popupCreatePlaceSelector = document.querySelector('#popup-createplace-template');
+export const popupWithImageSelector = document.querySelector('#popup-withimage-template');
 export const elements = '.elements';
 
 export const initialForms = {

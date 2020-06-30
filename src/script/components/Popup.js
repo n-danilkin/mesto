@@ -1,6 +1,7 @@
 export default class Popup {
     constructor(popupSelector) {
         this._popupSelector = popupSelector;
+        this._escapeKeydownEvent = this._escapeKeydownEvent.bind(this)
     }
     _createPopup(popupTemplate) {
         const popup = popupTemplate.content.cloneNode(true);
@@ -21,20 +22,18 @@ export default class Popup {
             }
         });
     }
-    _addEscListeners() {
-        const escapeKeydownEvent = (evt) => {
-            if (evt.key === 'Escape') {
-                this.close();
-                document.removeEventListener('keydown', escapeKeydownEvent);
-            }
+    _escapeKeydownEvent(evt) {
+        if (evt.key === 'Escape') {
+            this.close();
         }
-        document.addEventListener('keydown', escapeKeydownEvent);
+    }
+    _addEscListeners() {
+        document.addEventListener('keydown', this._escapeKeydownEvent);
     }
     _animationOpenPopup(popup) {
         popup.offsetHeight;
         popup.style.opacity = '1';
     }
-
     _animationClosePopup(popup) {
         popup.style.opacity = '0';
     }
@@ -43,8 +42,9 @@ export default class Popup {
         this._container.addEventListener('transitionend', () => {
             this._closePopup(this._container);
         });
+        document.removeEventListener('keydown', this._escapeKeydownEvent);
     }
-    open() {        
+    open() {
         this._container = this._createPopup(this._popupSelector);
         this.setEventListeners(this._container);
         this._addEscListeners();

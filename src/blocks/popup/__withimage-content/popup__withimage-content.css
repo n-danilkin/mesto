@@ -1,0 +1,12 @@
+.popup__withimage-content {
+    max-width: 75vw;
+    max-height: 75vh;
+    height: auto;
+    width: auto;
+    display: flex;
+    background: transparent;
+    position: relative;
+    background-size: cover;
+    border-radius: 0;
+    padding: 0;
+}

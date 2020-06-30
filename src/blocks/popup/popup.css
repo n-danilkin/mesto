@@ -2,14 +2,22 @@
 @import url('./__title/popup__title.css');
 @import url('./__close-button/popup__close-button.css');
 @import url('./__close-button-image/popup__close-button-image.css');
-
+@import url('./__withimage-content/popup__withimage-content.css');
+@import url('./__caption/popup__caption.css');
+@import url('./__image/popup__image.css');
 .popup {
-    width: 100%;
-    min-height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, .5);
     position: fixed;
-    top: 0px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;    
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: hidden; 
     opacity: 0;
     transition: opacity 0.5s linear;
 }

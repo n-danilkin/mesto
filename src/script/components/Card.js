@@ -1,4 +1,3 @@
-import PopupWithImage from "./PopupWithImage.js";
 export default class Card {
     constructor({ data, cardSelector, handleCardClick }) {
         this._cardSelector = cardSelector;
@@ -17,20 +16,24 @@ export default class Card {
         this._element = this._getTemplate();
         this._setEventListeners();
         this._element.querySelector('.element__description').textContent = this._name;
-        this._element.querySelector('.element__image').src = this._link;
+        this._cardImage = this._element.querySelector('.element__image');
+        this._cardImage.src = this._link;
+        this._cardImage.alt = this._name;
         return this._element
-
     }
-    _setEventListeners() {
+    _likeCard() {
         this._element.querySelector('.element__like-button').addEventListener('click', function (evt) {
             const eventTarget = evt.target;
             eventTarget.classList.toggle('element__like-button_active');
         });
-
+    }
+    _deleteCard() {
         this._element.querySelector('.element__delete-button').addEventListener('click', function (evt) {
             const eventTarget = evt.target;
             eventTarget.parentElement.remove();
         });
+    }
+    _handleImageClick() {
         this._element.querySelector('.element__image').addEventListener('click', () => {
             this._handleCardClick({
                 link: this._link,
@@ -38,4 +41,10 @@ export default class Card {
             })
         });
     }
+    _setEventListeners() {
+        this._likeCard();
+        this._deleteCard();
+        this._handleImageClick();
+    }
 }
+
