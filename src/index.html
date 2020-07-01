@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mesto</title>    
+    <title>mesto</title>
 </head>
 
 <body>
@@ -57,106 +57,76 @@
             </div>
         </div>
     </template>
-    <template id="popup-template">
-        <div class="popup">
-            <div class="popup__content">
-                <button class="popup__close-button">
-                    <svg class="popup__close-button-image" viewBox="0 0 34 34" width="33" height="33" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M32.7661 29.5683L19.9759 16.778L32.7661 3.98779L29.5686 0.790236L16.7783 13.5805L3.98808 0.790236L0.790527 3.98779L13.5808 16.778L0.790527 29.5683L3.98808 32.7658L16.7783 19.9756L29.5686 32.7658L32.7661 29.5683Z"
-                            fill="white" />
-                    </svg>
-                </button>
-                <h2 class="popup__title"></h2>
-                <form class="popup-form" novalidate>
-                    <fieldset class="popup-form__set">
-                        <label class="popup-form__field">
-                            <input class="popup-form__input" id="first-field-input">
-                            <span class='popup-form__input-error' id='first-field-input-error'></span>
-                        </label>
-                        <label class="popup-form__field">
-                            <input class="popup-form__input" id="second-field-input">
-                            <span class='popup-form__input-error' id='second-field-input-error'></span>
-                        </label>
-                        <button class="popup-form__submit button" type="submit"></button>
-                    </fieldset>
-                </form>
-            </div>
+    <div class="popup" id="popup-editprofile">
+        <div class="popup__content">
+            <button class="popup__close-button">
+                <svg class="popup__close-button-image" viewBox="0 0 34 34" width="33" height="33" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M32.7661 29.5683L19.9759 16.778L32.7661 3.98779L29.5686 0.790236L16.7783 13.5805L3.98808 0.790236L0.790527 3.98779L13.5808 16.778L0.790527 29.5683L3.98808 32.7658L16.7783 19.9756L29.5686 32.7658L32.7661 29.5683Z"
+                        fill="white" />
+                </svg>
+            </button>
+            <h2 class="popup__title">Редактировать профиль</h2>
+            <form class="popup-form" novalidate>
+                <fieldset class="popup-form__set">
+                    <label class="popup-form__field">
+                        <input class="popup-form__input" name="name" required minlength="2" maxlength="40" type="text"
+                            pattern="[a-zA-ZА-ЯЁа-яё\s\-]+[^\s\-]+" id="first-field-input">
+                        <span class='popup-form__input-error' id='first-field-input-error'></span>
+                    </label>
+                    <label class="popup-form__field">
+                        <input class="popup-form__input" name="description" required minlength="2" maxlength="200"
+                            id="second-field-input">
+                        <span class='popup-form__input-error' id='second-field-input-error'></span>
+                    </label>
+                    <button class="popup-form__submit button" type="submit">Сохранить</button>
+                </fieldset>
+            </form>
         </div>
-    </template>
-    <template id="popup-editprofile-template">
-        <div class="popup">
-            <div class="popup__content">
-                <button class="popup__close-button">
-                    <svg class="popup__close-button-image" viewBox="0 0 34 34" width="33" height="33" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M32.7661 29.5683L19.9759 16.778L32.7661 3.98779L29.5686 0.790236L16.7783 13.5805L3.98808 0.790236L0.790527 3.98779L13.5808 16.778L0.790527 29.5683L3.98808 32.7658L16.7783 19.9756L29.5686 32.7658L32.7661 29.5683Z"
-                            fill="white" />
-                    </svg>
-                </button>
-                <h2 class="popup__title">Редактировать профиль</h2>
-                <form class="popup-form" novalidate>
-                    <fieldset class="popup-form__set">
-                        <label class="popup-form__field">
-                            <input class="popup-form__input" name="name" required minlength="2" maxlength="40" type="text" pattern="[a-zA-ZА-ЯЁа-яё\s\-]+[^\s\-]+" id="first-field-input">
-                            <span class='popup-form__input-error' id='first-field-input-error'></span>
-                        </label>
-                        <label class="popup-form__field">
-                            <input class="popup-form__input" name="description" required minlength="2" maxlength="200" id="second-field-input">
-                            <span class='popup-form__input-error' id='second-field-input-error'></span>
-                        </label>
-                        <button class="popup-form__submit button" type="submit">Сохранить</button>
-                    </fieldset>
-                </form>
-            </div>
+    </div>
+    <div class="popup" id="popup-createplace">
+        <div class="popup__content">
+            <button class="popup__close-button">
+                <svg class="popup__close-button-image" viewBox="0 0 34 34" width="33" height="33" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M32.7661 29.5683L19.9759 16.778L32.7661 3.98779L29.5686 0.790236L16.7783 13.5805L3.98808 0.790236L0.790527 3.98779L13.5808 16.778L0.790527 29.5683L3.98808 32.7658L16.7783 19.9756L29.5686 32.7658L32.7661 29.5683Z"
+                        fill="white" />
+                </svg>
+            </button>
+            <h2 class="popup__title">Новое место</h2>
+            <form class="popup-form" name="add" novalidate>
+                <fieldset class="popup-form__set">
+                    <label class="popup-form__field">
+                        <input class="popup-form__input" required minlength="1" maxlength="30" type="text" name="name"
+                            placeholder="Название" id="first-field-input">
+                        <span class='popup-form__input-error' id='first-field-input-error'></span>
+                    </label>
+                    <label class="popup-form__field">
+                        <input class="popup-form__input" required name="link" type="url"
+                            placeholder="Ссылка на картинку" id="second-field-input">
+                        <span class='popup-form__input-error' id='second-field-input-error'></span>
+                    </label>
+                    <button class="popup-form__submit button" type="submit">Создать</button>
+                </fieldset>
+            </form>
         </div>
-    </template>
-    <template id="popup-createplace-template">
-        <div class="popup">
-            <div class="popup__content">
-                <button class="popup__close-button">
-                    <svg class="popup__close-button-image" viewBox="0 0 34 34" width="33" height="33" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M32.7661 29.5683L19.9759 16.778L32.7661 3.98779L29.5686 0.790236L16.7783 13.5805L3.98808 0.790236L0.790527 3.98779L13.5808 16.778L0.790527 29.5683L3.98808 32.7658L16.7783 19.9756L29.5686 32.7658L32.7661 29.5683Z"
-                            fill="white" />
-                    </svg>
-                </button>
-                <h2 class="popup__title">Новое место</h2>
-                <form class="popup-form" novalidate>
-                    <fieldset class="popup-form__set">
-                        <label class="popup-form__field">
-                            <input class="popup-form__input" required minlength="1" maxlength="30" type="text" name="name" placeholder="Название" id="first-field-input">
-                            <span class='popup-form__input-error' id='first-field-input-error'></span>
-                        </label>
-                        <label class="popup-form__field">
-                            <input class="popup-form__input" required name="link" type="url" placeholder="Ссылка на картинку" id="second-field-input">
-                            <span class='popup-form__input-error' id='second-field-input-error'></span>
-                        </label>
-                        <button class="popup-form__submit button" type="submit">Создать</button>
-                    </fieldset>
-                </form>
-            </div>
+    </div>
+    <div class="popup" id="popup-withimage">
+        <div class="popup__withimage-content">
+            <button class="popup__close-button">
+                <svg class="popup__close-button-image" viewBox="0 0 34 34" width="33" height="33" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M32.7661 29.5683L19.9759 16.778L32.7661 3.98779L29.5686 0.790236L16.7783 13.5805L3.98808 0.790236L0.790527 3.98779L13.5808 16.778L0.790527 29.5683L3.98808 32.7658L16.7783 19.9756L29.5686 32.7658L32.7661 29.5683Z"
+                        fill="white" />
+                </svg>
+            </button>
+            <img class="popup__image">
+            <p class="popup__caption"></p>
         </div>
-    </template>
-    <template id="popup-withimage-template">
-        <div class="popup">
-            <div class="popup__withimage-content">
-                <button class="popup__close-button">
-                    <svg class="popup__close-button-image" viewBox="0 0 34 34" width="33" height="33" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M32.7661 29.5683L19.9759 16.778L32.7661 3.98779L29.5686 0.790236L16.7783 13.5805L3.98808 0.790236L0.790527 3.98779L13.5808 16.778L0.790527 29.5683L3.98808 32.7658L16.7783 19.9756L29.5686 32.7658L32.7661 29.5683Z"
-                            fill="white" />
-                    </svg>
-                </button>              
-              <img class="popup__image">
-              <p class="popup__caption"></p>
-            </div>
-          </div>
-    </template>
+    </div>
 </body>
 
 </html>

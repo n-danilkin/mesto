@@ -43,9 +43,6 @@ const cardsList = new Section({
 );
 
 profilePopupOpenButton.addEventListener('click', function () {
-  if (document.querySelector('.popup')) {
-    return
-  }
   const popup = new PopupWithForm({
     popupSelector: popupEditFormSelector,
     handleFormSubmit: (item) => {
@@ -67,9 +64,6 @@ profilePopupOpenButton.addEventListener('click', function () {
 
 
 placePopupOpenButton.addEventListener('click', function () {
-  if (document.querySelector('.popup')) {
-    return
-  }
   const popup = new PopupWithForm({
     popupSelector: popupCreatePlaceSelector,
     handleFormSubmit: (item) => {
