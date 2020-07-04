@@ -28,6 +28,8 @@ export const initialCards = [
 export const popupEditFormSelector = document.querySelector('#popup-editprofile');
 export const popupCreatePlaceSelector = document.querySelector('#popup-createplace');
 export const popupWithImageSelector = document.querySelector('#popup-withimage');
+export const popupWithConfirm = document.querySelector('#popup-confirm');
+export const popupChangeAvatar = document.querySelector('#popup-changeavatar');
 export const elements = '.elements';
 
 export const initialForms = {

@@ -27,6 +27,7 @@
   - HTML5
   - CSS3
   - JavaScript
+  - HTTP 
   
 Сборка:
   - WebPack

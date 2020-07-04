@@ -6,6 +6,8 @@
 @import url('./__info/profile__info.css');
 @import url('./__info-text-container/profile__info-text-container.css');
 @import url('./__info-edit-button-img/profile__info-edit-button-img.css');
+@import url('./__avatar-container/profile__avatar-container.css');
+@import url('./__avatar-edit-icon/profile__avatar-icon.css');
 
 .profile {
     margin: auto;

@@ -1,7 +1,7 @@
 export default class UserInfo {
     constructor({profileName, profileDescription}) {
         this._profileName = document.querySelector(profileName);
-        this._profileDescription = document.querySelector(profileDescription);
+        this._profileDescription = document.querySelector(profileDescription);        
     }
     getUserInfo() {        
         return {
@@ -9,8 +9,9 @@ export default class UserInfo {
           description: this._profileDescription.innerHTML,
         };
     }
-    setUserInfo({name, description}) {
+    setUserInfo({name, about}) {
         this._profileName.textContent = name;
-        this._profileDescription.textContent = description;
+        this._profileDescription.textContent = about;
+          // записывать owner _id        
     }
 }

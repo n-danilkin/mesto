@@ -4,6 +4,7 @@
 @import url('./__like-button/element__like-button.css');
 @import url('./__like-button/_active/element__like-button_active.css');
 @import url('./__delete-button/element__delete-button.css');
+@import url('./__like-counter/element__like-counter.css');
 .element {
     border-radius: 10px;        
     display: flex;

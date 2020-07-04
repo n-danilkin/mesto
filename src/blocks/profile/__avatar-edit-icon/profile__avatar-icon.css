@@ -1,0 +1,16 @@
+.profile__avatar-icon {
+    position: absolute;    
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    top: 0;
+    z-index: 1;    
+}
+
+.profile__avatar-icon:hover {
+    background: url(../../../images/Vector.svg) center no-repeat;     
+}
+
+.profile__avatar-container:hover .profile__avatar {
+    opacity: 0.8;
+}
