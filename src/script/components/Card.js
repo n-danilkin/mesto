@@ -3,55 +3,62 @@ export default class Card {
         this._cardSelector = cardSelector;
         this._name = data.name;
         this._link = data.link;
-        this._id = data._id;
+        this.id = data._id;
         this._cardOwnerId = data.owner;
-        this._likes = data.likes; // записывать +id  атрибут брать like.length        
+        this._likes = data.likes;
         this._handleCardClick = handleCardClick;
         this._handleDeleteButtonClick = handleDeleteButtonClick;
         this._handleLikeClick = handleLikeClick;
-        this._profileId = document.querySelector('.profile').id
+        this._profileId = document.querySelector('.profile').id;
     }
     _getTemplate() {
         const placeElement = document
             .querySelector(this._cardSelector)
             .content
             .cloneNode(true);
-        return placeElement;
+        return placeElement.children[0];
     }
     generateCard() {
         this._element = this._getTemplate();
         this._setEventListeners();
+        this.updateLikeData(this._likes)
         this._element.querySelector('.element__description').textContent = this._name;
         this._cardImage = this._element.querySelector('.element__image');
-        this._element.querySelector('.element__like-counter').textContent = this._likes.length;
         this._cardImage.src = this._link;
         this._cardImage.alt = this._name;
-        this._cardImage.parentElement.id = this._id;
+        this._cardImage.parentElement.id = this.id;
 
         return this._element
     }
     _isOwner() {
-        if (this._profileId == this._cardOwnerId._id) {
-            return true
-        } else {
-            return false
-        }
+        return this._profileId === this._cardOwnerId._id
+
     }
-    _isLiked() {
-        if (this._likes.some((element) => { return element._id == this._profileId })) {
-            return true
+    isLiked() {
+        return this._likes.some((element) => element._id === this._profileId)
+    }
+    updateLikeData(likes) {
+        this._likes = likes;
+        const likeButtonElem = this._element.querySelector('.element__like-button');
+        const likeCounterElem = this._element.querySelector('.element__like-counter')
+
+        if (this.isLiked()) {
+            likeButtonElem.classList.add('element__like-button_active');
         } else {
-            return false
-        }
+            likeButtonElem.classList.remove('element__like-button_active');
+        }        
+        
+        likeCounterElem.textContent = this._likes.length;
     }
     _likeCard() {
-        if (this._isLiked()) {
-            this._element.querySelector('.element__like-button').classList.toggle('element__like-button_active');
-        }
-        this._element.querySelector('.element__like-button').addEventListener('click', (evt) => {
-            const eventTarget = evt.target;
-            this._handleLikeClick(this._id, this._isLiked())
-            eventTarget.classList.toggle('element__like-button_active');
+        /*
+            Надо исправить: лайк должен ставиться только если запрос на сервер выполнился успешно
+            Все изменения на странице должны происходить, только после того, как
+            сервер ответил подтверждением. Если сервер не ответил, или ответил ошибкой, а
+            данные на странице сохраняться, то это может ввести пользователя в заблуждение
+        */
+        this._element.querySelector('.element__like-button').addEventListener('click', () => {
+            this._handleLikeClick(this);
         });
     }
     _deleteCard() {

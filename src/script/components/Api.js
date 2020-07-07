@@ -1,38 +1,72 @@
 export default class Api {
-    constructor() {
-
+    constructor({ baseURL, key }) {
+        this._baseURL = baseURL;
+        this._key = key;
+    }
+    _getResponseData(res) {
+        if (res.ok) {
+            return res.json();
+        }
+        return Promise.reject(`Ошибка: ${res.status}`);
     }
     getInitialCards() {
-        return fetch('https://mesto.nomoreparties.co/v1/cohort-12/cards', {
-            headers: {
-                authorization: 'cb60a489-6ec1-4e08-8c6a-5f804e99b68e'
-            }
-        })
-            .then(res => {
-                if (res.ok) {
-                    return res.json(); // лайки имя линки
-                }
-                return Promise.reject(`Ошибка: ${res.status}`);
-            })
-    }
-    getProfileInfo() {
-        return fetch('https://mesto.nomoreparties.co/v1/cohort-12/users/me', {
-            headers: {
-                authorization: 'cb60a489-6ec1-4e08-8c6a-5f804e99b68e'
-            }
-        })
-            .then(res => {
-                if (res.ok) {
+        /*
+        if (res.ok) {
                     return res.json();
                 }
                 return Promise.reject(`Ошибка: ${res.status}`);
+            Надо исправить: базовый адрес сервера 
+             и ключ авторизации передавать как параметр
+            конструктора класса, а не хардкодить в каждом методе
+
+            В методах использовать данные переданные в констуктор
+            Например:
+            fetch(`${this.baseUrl}}/cards`, {
+                headers: {
+                    authorization: this._key
+                }
+        */
+        return fetch(`${this._baseURL}/cards`, {
+            headers: {
+                authorization: this._key
+            }
+        })
+            .then(res => {
+                return this._getResponseData(res);
+                // if (res.ok) {
+                //     return res.json();
+                // }
+                // return Promise.reject(`Ошибка: ${res.status}`);             
+                /*
+                    Можно лучше: проверка ответа сервера и преобразование из json
+                    дублируется во всех методах класса Api, лучше вынести в отдельный метод:
+                        _getResponseData(res) {
+                            if (!res.ok) {
+                                return Promise.reject(`Ошибка: ${res.status}`); 
+                            }
+                            return res.json();
+                        }
+                    Подчеркивание в начале имени метода говорит о том, что метод является приватным, т.е.
+                    не используется вне класса Api   
+                */
+
+            })
+    }
+    getProfileInfo() {
+        return fetch(`${this._baseURL}/users/me`, {
+            headers: {
+                authorization: this._key
+            }
+        })
+            .then(res => {
+                return this._getResponseData(res);
             })
     }
     patchProfileInfo({ name, about }) {
-        return fetch('https://mesto.nomoreparties.co/v1/cohort-12/users/me', {
+        return fetch(`${this._baseURL}/users/me`, {
             method: 'PATCH',
             headers: {
-                authorization: 'cb60a489-6ec1-4e08-8c6a-5f804e99b68e',
+                authorization: this._key,
                 'Content-type': 'application/json'
             },
             body: JSON.stringify({
@@ -41,10 +75,7 @@ export default class Api {
             })
         })
             .then(res => {
-                if (res.ok) {
-                    return res.json();
-                }
-                return Promise.reject(`Ошибка: ${res.status}`);
+                return this._getResponseData(res);
             })
             .then((res) => {
                 return {
@@ -54,10 +85,10 @@ export default class Api {
             })
     }
     postNewCard({ name, link }) {
-        return fetch('https://mesto.nomoreparties.co/v1/cohort-12/cards', {
+        return fetch(`${this._baseURL}/cards`, {
             method: 'POST',
             headers: {
-                authorization: 'cb60a489-6ec1-4e08-8c6a-5f804e99b68e',
+                authorization: this._key,
                 'Content-type': 'application/json'
             },
             body: JSON.stringify({
@@ -66,59 +97,47 @@ export default class Api {
             })
         })
             .then((res) => {
-                if (res.ok) {
-                    return res.json();
-                }
-                return Promise.reject(`Ошибка ${res.status}`);
+                return this._getResponseData(res);
             })
     }
     putLike(cardId) {
-        return fetch(`https://mesto.nomoreparties.co/v1/cohort-12/cards/likes/${cardId}`, {
+        return fetch(`${this._baseURL}/cards/likes/${cardId}`, {
             method: 'PUT',
             headers: {
-                authorization: 'cb60a489-6ec1-4e08-8c6a-5f804e99b68e'
+                authorization: this._key
             }
         })
             .then((res) => {
-                if (res.ok) {
-                    return res.json();
-                }
-                return Promise.reject(`Ошибка ${res.status}`);
+                return this._getResponseData(res);
             })
     }
     deleteLike(cardId) {
-        return fetch(`https://mesto.nomoreparties.co/v1/cohort-12/cards/likes/${cardId}`, {
+        return fetch(`${this._baseURL}/cards/likes/${cardId}`, {
             method: 'DELETE',
             headers: {
-                authorization: 'cb60a489-6ec1-4e08-8c6a-5f804e99b68e'
+                authorization: this._key
             }
         })
             .then((res) => {
-                if (res.ok) {
-                    return res.json();
-                }
-                return Promise.reject(`Ошибка ${res.status}`);
+                return this._getResponseData(res);
             })
     }
     deleteCard(cardId) {
-        return fetch(`https://mesto.nomoreparties.co/v1/cohort-12/cards/${cardId}`, {
+        return fetch(`${this._baseURL}/cards/${cardId}`, {
             method: 'DELETE',
             headers: {
-                authorization: 'cb60a489-6ec1-4e08-8c6a-5f804e99b68e'
+                authorization: this._key
             }
         })
             .then((res) => {
-                if (res.ok) {
-                    return res.json();
-                }
-                return Promise.reject(`Ошибка ${res.status}`);
+                return this._getResponseData(res);
             })
     }
     patchAvatar(avatar) {
-        return fetch('https://mesto.nomoreparties.co/v1/cohort-12/users/me/avatar', {
+        return fetch(`${this._baseURL}/users/me/avatar`, {
             method: 'PATCH',
             headers: {
-                authorization: 'cb60a489-6ec1-4e08-8c6a-5f804e99b68e',
+                authorization: this._key,
                 'Content-type': 'application/json'
             },
             body: JSON.stringify({
@@ -126,10 +145,7 @@ export default class Api {
             })
         })
             .then(res => {
-                if (res.ok) {
-                    return res.json();
-                }
-                return Promise.reject(`Ошибка: ${res.status}`);
+                return this._getResponseData(res);
             })
     }
 }

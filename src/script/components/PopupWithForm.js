@@ -28,7 +28,10 @@ export default class PopupWithForm extends Popup {
     evt.preventDefault();
     this.renderSaving(true);
     this._handleFormSubmit(this._getInputValues(this._popupSelector));    
-    this.close();
+    /*
+      Надо исправить: попап должен закрываться, только если запрос выполнился успешно 
+      Нужно перенести закрытие попапа в блок then там где сервер отвечает
+    */    
   }
   setEventListeners(popup) {
     super.setEventListeners(popup);

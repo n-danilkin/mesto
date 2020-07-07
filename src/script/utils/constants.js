@@ -45,5 +45,6 @@ export const initialForms = {
 
 export const profileInfo = {
   profileName: '.profile__info-name',
-  profileDescription: '.profile__info-description'
+  profileDescription: '.profile__info-description',
+  profileAvatar: '.profile__avatar'
 }
