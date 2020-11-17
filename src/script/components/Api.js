@@ -10,22 +10,6 @@ export default class Api {
         return Promise.reject(`Ошибка: ${res.status}`);
     }
     getInitialCards() {
-        /*
-        if (res.ok) {
-                    return res.json();
-                }
-                return Promise.reject(`Ошибка: ${res.status}`);
-            Надо исправить: базовый адрес сервера 
-             и ключ авторизации передавать как параметр
-            конструктора класса, а не хардкодить в каждом методе
-
-            В методах использовать данные переданные в констуктор
-            Например:
-            fetch(`${this.baseUrl}}/cards`, {
-                headers: {
-                    authorization: this._key
-                }
-        */
         return fetch(`${this._baseURL}/cards`, {
             headers: {
                 authorization: this._key
@@ -33,23 +17,6 @@ export default class Api {
         })
             .then(res => {
                 return this._getResponseData(res);
-                // if (res.ok) {
-                //     return res.json();
-                // }
-                // return Promise.reject(`Ошибка: ${res.status}`);             
-                /*
-                    Можно лучше: проверка ответа сервера и преобразование из json
-                    дублируется во всех методах класса Api, лучше вынести в отдельный метод:
-                        _getResponseData(res) {
-                            if (!res.ok) {
-                                return Promise.reject(`Ошибка: ${res.status}`); 
-                            }
-                            return res.json();
-                        }
-                    Подчеркивание в начале имени метода говорит о том, что метод является приватным, т.е.
-                    не используется вне класса Api   
-                */
-
             })
     }
     getProfileInfo() {

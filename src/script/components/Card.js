@@ -51,12 +51,6 @@ export default class Card {
         likeCounterElem.textContent = this._likes.length;
     }
     _likeCard() {
-        /*
-            Надо исправить: лайк должен ставиться только если запрос на сервер выполнился успешно
-            Все изменения на странице должны происходить, только после того, как
-            сервер ответил подтверждением. Если сервер не ответил, или ответил ошибкой, а
-            данные на странице сохраняться, то это может ввести пользователя в заблуждение
-        */
         this._element.querySelector('.element__like-button').addEventListener('click', () => {
             this._handleLikeClick(this);
         });

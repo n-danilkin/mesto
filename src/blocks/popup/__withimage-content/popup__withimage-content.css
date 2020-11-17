@@ -4,9 +4,12 @@
     height: auto;
     width: auto;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    background: no-repeat;
+    background-size: cover;
     background: transparent;
     position: relative;
-    background-size: cover;
     border-radius: 0;
-    padding: 0;
+    padding: 0;    
 }
