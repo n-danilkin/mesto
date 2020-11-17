@@ -1,11 +1,14 @@
 {
+  "homepage": "https://elf649.github.io/mesto/",
   "name": "mesto",
   "version": "1.0.0",
   "description": "[github](https://github.com/ElF649/mesto)\r [gitpages](https://elf649.github.io/mesto/)",
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "dev": "webpack-dev-server --open --watch"
+    "dev": "webpack-dev-server --open --watch",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -16,7 +19,6 @@
   "bugs": {
     "url": "https://github.com/ElF649/mesto/issues"
   },
-  "homepage": "https://github.com/ElF649/mesto#readme",
   "devDependencies": {
     "@babel/core": "^7.10.3",
     "@babel/plugin-proposal-class-properties": "^7.10.1",
@@ -36,6 +38,7 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "core-js": "^3.6.5"
+    "core-js": "^3.6.5",
+    "gh-pages": "^3.1.0"
   }
 }
